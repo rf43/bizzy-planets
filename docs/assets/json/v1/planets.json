@@ -1,7 +1,18 @@
 {
+    "config": {
+        "baseurl": "https://rf43.github.io/bizzy-planets",
+        "paths": {
+            "images": "/assets/images"
+        }
+    },
     "attribution": {
         "overview-url": "https://solarsystem.nasa.gov/planets/overview/",
         "name": "Planetary Science Communications team at NASA's Jet Propulsion Laboratory for NASA's Science Mission Directorate."
+    },
+    "sun": {
+        "images": {
+            "thumbnail": "sun_with_flares.jpg"
+        }
     },
     "planets": [
         {
@@ -15,8 +26,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/mercury/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/mercury_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/mercury_hero.jpg"
+                "thumbnail": "mercury_thumb.jpg",
+                "hero": "mercury_hero.jpg"
             }
         },
         {
@@ -34,8 +45,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/venus/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/venus_thumb.png",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/venus_hero.jpg"
+                "thumbnail": "venus_thumb.png",
+                "hero": "venus_hero.jpg"
             }
         },
         {
@@ -49,8 +60,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/earth/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/earth_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/earth_hero.jpg"
+                "thumbnail": "earth_thumb.jpg",
+                "hero": "earth_hero.jpg"
             }
         },
         {
@@ -69,8 +80,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/mars/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/mars_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/mars_hero.jpg"
+                "thumbnail": "mars_thumb.jpg",
+                "hero": "mars_hero.jpg"
             }
         },
         {
@@ -85,8 +96,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/jupiter/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/jupiter_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/jupiter_hero.jpg"
+                "thumbnail": "jupiter_thumb.jpg",
+                "hero": "jupiter_hero.jpg"
             }
         },
         {
@@ -100,8 +111,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/saturn/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/saturn_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/saturn_hero.jpg"
+                "thumbnail": "saturn_thumb.jpg",
+                "hero": "saturn_hero.jpg"
             }
         },
         {
@@ -114,8 +125,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/uranus/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/uranus_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/uranus_hero.jpg"
+                "thumbnail": "uranus_thumb.jpg",
+                "hero": "uranus_hero.jpg"
             }
         },
         {
@@ -129,8 +140,8 @@
             ],
             "link": "https://solarsystem.nasa.gov/planets/neptune/overview/",
             "images": {
-                "thumbnail": "https://rf43.github.io/bizzy-planets/assets/images/neptune_thumb.jpg",
-                "hero": "https://rf43.github.io/bizzy-planets/assets/images/neptune_hero.jpg"
+                "thumbnail": "neptune_thumb.jpg",
+                "hero": "neptune_hero.jpg"
             }
         }
     ]
