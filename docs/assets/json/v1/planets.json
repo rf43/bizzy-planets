@@ -1,6 +1,8 @@
 {
-    "version": "1.0",
-    "overview-url": "https://solarsystem.nasa.gov/planets/overview/",
+    "attribution": {
+        "overview-url": "https://solarsystem.nasa.gov/planets/overview/",
+        "name": "Planetary Science Communications team at NASA's Jet Propulsion Laboratory for NASA's Science Mission Directorate."
+    },
     "planets": [
         {
             "name": "Mercury",
