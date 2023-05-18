@@ -4,10 +4,7 @@ import android.util.Log
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import net.rf43.bizzyplanets.api.BizzyPlanetsApi
 import net.rf43.bizzyplanets.data.models.PlanetModel
 import javax.inject.Inject

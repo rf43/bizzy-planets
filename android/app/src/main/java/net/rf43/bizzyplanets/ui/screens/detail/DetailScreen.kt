@@ -3,7 +3,6 @@ package net.rf43.bizzyplanets.ui.screens.detail
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontVariation.weight
 import androidx.compose.ui.tooling.preview.Preview
 import net.rf43.bizzyplanets.data.models.PlanetModel
 import net.rf43.bizzyplanets.ui.theme.BizzyPlanetsTheme
