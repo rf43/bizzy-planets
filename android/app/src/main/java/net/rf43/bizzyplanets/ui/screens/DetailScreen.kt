@@ -3,7 +3,6 @@ package net.rf43.bizzyplanets.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,13 +17,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import net.rf43.bizzyplanets.R
-import net.rf43.bizzyplanets.api.TempApiData.planetList
-import net.rf43.bizzyplanets.data.models.Planet
+import net.rf43.bizzyplanets.data.models.PlanetModel
 import net.rf43.bizzyplanets.ui.theme.BizzyPlanetsTheme
 
 @Composable
 fun DetailScreen(
-    planet: Planet,
+    planetDetail: PlanetModel,
     onBackSelected: (String) -> Unit
 ) {
     Column {
@@ -37,14 +35,14 @@ fun DetailScreen(
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(planet.heroUrl)
+                    .data(planetDetail.images.hero)
                     .crossfade(true)
                     .build(),
                 contentDescription = null,
                 placeholder = painterResource(id = R.drawable.ic_android_black_48dp)
             )
             Text(
-                text = planet.name,
+                text = planetDetail.name,
                 color = Color.White
             )
         }
@@ -55,11 +53,8 @@ fun DetailScreen(
 @Composable
 private fun DetailScreenPortraitPreview() {
     BizzyPlanetsTheme {
-        DetailScreen(planet = Planet(
-            name = "Mars",
-            thumbUrl = "",
-            heroUrl = ""
-        )
+        DetailScreen(
+            planetDetail = previewPlanetModel
         ) {}
     }
 }
@@ -68,10 +63,12 @@ private fun DetailScreenPortraitPreview() {
 @Composable
 private fun DetailScreenLandscapePreview() {
     BizzyPlanetsTheme {
-        DetailScreen(planet = Planet(
-            name = "Mars",
-            thumbUrl = "",
-            heroUrl = ""
-        )) {}
+        DetailScreen(
+            planetDetail = previewPlanetModel
+        ) {}
     }
 }
+
+private val previewPlanetModel = PlanetModel(
+    name = "SomePlanet"
+)

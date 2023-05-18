@@ -5,24 +5,24 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import net.rf43.bizzyplanets.api.BizzyPlanetsApi
-import net.rf43.bizzyplanets.data.models.Planet
+import net.rf43.bizzyplanets.data.models.PlanetModel
 import javax.inject.Inject
 
 interface BizzyPlanetsRepository {
 
-    suspend fun fetchAllPlanets(): List<Planet>
-    suspend fun fetchPlanetDetails(name: String): Planet
+    suspend fun fetchAllPlanets(): List<PlanetModel>
+    suspend fun fetchPlanetDetails(name: String): PlanetModel
 }
 
 class BizzyPlanetsRepositoryImpl @Inject constructor(
     private val api: BizzyPlanetsApi
 ) : BizzyPlanetsRepository {
 
-    override suspend fun fetchAllPlanets(): List<Planet> {
+    override suspend fun fetchAllPlanets(): List<PlanetModel> {
         return api.fetchAllPlanetData()
     }
 
-    override suspend fun fetchPlanetDetails(name: String): Planet {
+    override suspend fun fetchPlanetDetails(name: String): PlanetModel {
         // just fetchAllPlanets for now
         return fetchAllPlanets().first {
             it.name == name

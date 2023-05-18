@@ -16,7 +16,7 @@ fun DetailScreenNavHost(
     viewModel.fetchPlanetDetails(planetName)
 
     DetailScreen(
-        planet = viewModel.planetDetailStateFlow.collectAsState().value,
+        planetDetail = viewModel.planetOLDDetailStateFlow.collectAsState().value,
         onBackSelected = { route ->
             navController.navigate(route)
         }
