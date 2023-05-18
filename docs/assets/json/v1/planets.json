@@ -1,10 +1,4 @@
 {
-    "config": {
-        "baseurl": "https://rf43.github.io/bizzy-planets",
-        "paths": {
-            "images": "/assets/images"
-        }
-    },
     "attribution": {
         "overview-url": "https://solarsystem.nasa.gov/planets/overview/",
         "name": "Planetary Science Communications team at NASA's Jet Propulsion Laboratory for NASA's Science Mission Directorate."
