@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import net.rf43.bizzyplanets.data.BizzyPlanetsRepository
-import net.rf43.bizzyplanets.data.models.Planet
+import net.rf43.bizzyplanets.data.models.PlanetModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,11 +15,11 @@ class ScreensViewModel @Inject constructor(
     private val repository: BizzyPlanetsRepository
 ) : ViewModel() {
 
-    private val _allPlanetsStateFlow: MutableStateFlow<List<Planet>> = MutableStateFlow(emptyList())
-    val allPlanetsStateFlow: StateFlow<List<Planet>> = _allPlanetsStateFlow
+    private val _allPlanetsStateFlow: MutableStateFlow<List<PlanetModel>> = MutableStateFlow(emptyList())
+    val allPlanetsStateFlow: StateFlow<List<PlanetModel>> = _allPlanetsStateFlow
 
-    private val _planetDetailStateFlow: MutableStateFlow<Planet> = MutableStateFlow(Planet("", "", ""))
-    val planetDetailStateFlow: StateFlow<Planet> = _planetDetailStateFlow
+    private val _planetDetailStateFlow: MutableStateFlow<PlanetModel> = MutableStateFlow(PlanetModel())
+    val planetDetailStateFlow: StateFlow<PlanetModel> = _planetDetailStateFlow
 
     fun initPlanets() {
         viewModelScope.launch {

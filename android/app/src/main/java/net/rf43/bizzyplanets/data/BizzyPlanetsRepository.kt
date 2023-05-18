@@ -1,41 +1,54 @@
 package net.rf43.bizzyplanets.data
 
+import android.util.Log
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import net.rf43.bizzyplanets.api.BizzyPlanetsApi
-import net.rf43.bizzyplanets.data.models.Planet
+import net.rf43.bizzyplanets.data.models.PlanetModel
 import javax.inject.Inject
+import javax.inject.Singleton
 
 interface BizzyPlanetsRepository {
 
-    suspend fun fetchAllPlanets(): List<Planet>
-    suspend fun fetchPlanetDetails(name: String): Planet
+    suspend fun fetchAllPlanets(): List<PlanetModel>
+    suspend fun fetchPlanetDetails(name: String): PlanetModel
 }
 
 class BizzyPlanetsRepositoryImpl @Inject constructor(
     private val api: BizzyPlanetsApi
 ) : BizzyPlanetsRepository {
 
-    override suspend fun fetchAllPlanets(): List<Planet> {
-        return api.fetchAllPlanetData()
+    init {
+        Log.d("RF43", "init")
     }
 
-    override suspend fun fetchPlanetDetails(name: String): Planet {
+    private val planetList: MutableList<PlanetModel> = mutableListOf()
+
+    override suspend fun fetchAllPlanets(): List<PlanetModel> {
+        planetList.addAll(api.fetchAllPlanetData())
+        return planetList
+    }
+
+    override suspend fun fetchPlanetDetails(name: String): PlanetModel {
         // just fetchAllPlanets for now
-        return fetchAllPlanets().first {
+        return planetList.firstOrNull {
             it.name == name
-        }
+        } ?: PlanetModel()
     }
 }
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class BizzyPlanetsRepositoryModule {
 
+    @Singleton
     @Binds
-    abstract fun bindBizzyPlanetsRepositoryModule(
+    abstract fun bindBizzyPlanetsRepository(
         impl: BizzyPlanetsRepositoryImpl
     ): BizzyPlanetsRepository
 }

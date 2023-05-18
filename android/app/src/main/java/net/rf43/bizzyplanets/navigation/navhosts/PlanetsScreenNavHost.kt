@@ -3,10 +3,7 @@ package net.rf43.bizzyplanets.navigation.navhosts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
 import net.rf43.bizzyplanets.navigation.DetailScreen
 import net.rf43.bizzyplanets.ui.screens.PlanetsScreen
 import net.rf43.bizzyplanets.ui.screens.ScreensViewModel

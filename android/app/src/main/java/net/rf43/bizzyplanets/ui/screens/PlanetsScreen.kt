@@ -25,12 +25,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import net.rf43.bizzyplanets.R
-import net.rf43.bizzyplanets.data.models.Planet
+import net.rf43.bizzyplanets.data.models.PlanetModel
 import net.rf43.bizzyplanets.ui.theme.BizzyPlanetsTheme
 
 @Composable
 fun PlanetsScreen(
-    planetList: List<Planet> = emptyList(),
+    planetList: List<PlanetModel> = emptyList(),
     onPlanetSelected: (String) -> Unit
 ) {
     Column(
@@ -57,7 +57,7 @@ fun PlanetsScreen(
                     AsyncImage(
                         modifier = Modifier.fillMaxSize(),
                         model = ImageRequest.Builder(LocalContext.current)
-                            .data(planetList[it].thumbUrl)
+                            .data(planetList[it].images.thumbnail)
                             .crossfade(true)
                             .build(),
                         contentDescription = null,
@@ -80,7 +80,16 @@ fun PlanetsScreen(
 @Composable
 fun PlanetsScreenPortraitPreview() {
     BizzyPlanetsTheme {
-        PlanetsScreen {}
+        PlanetsScreen(
+            planetList = listOf(
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel()
+            )
+        ) {}
     }
 }
 
@@ -88,6 +97,15 @@ fun PlanetsScreenPortraitPreview() {
 @Composable
 fun PlanetsScreenLandscapePreview() {
     BizzyPlanetsTheme {
-        PlanetsScreen {}
+        PlanetsScreen(
+            planetList = listOf(
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel(),
+                PlanetModel()
+            )
+        ) {}
     }
 }
