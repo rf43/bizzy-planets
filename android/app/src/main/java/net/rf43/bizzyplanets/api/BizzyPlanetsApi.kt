@@ -3,7 +3,6 @@ package net.rf43.bizzyplanets.api
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 import net.rf43.bizzyplanets.data.models.PlanetModel
 import net.rf43.bizzyplanets.data.models.adaptTo
