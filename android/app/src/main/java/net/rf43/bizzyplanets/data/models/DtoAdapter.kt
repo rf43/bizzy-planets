@@ -8,13 +8,9 @@ internal fun PlanetDTO?.adaptTo(): PlanetModel {
         link = this?.link ?: "",
         quickDescription = this?.quickDescription ?: "",
         shortDescription = this?.shortDescription ?: "",
-        longDescription = adaptLongDescription(this?.longDescription),
+        longDescription = this?.longDescription ?: "",
         images = this?.images.adaptTo()
     )
-}
-
-private fun adaptLongDescription(stringList: List<String?>?): List<String> {
-    return stringList?.filterNotNull() ?: emptyList()
 }
 
 private fun ImagesDTO?.adaptTo(): PlanetImagesModel {

@@ -5,7 +5,7 @@ data class PlanetModel(
     val link: String = "",
     val quickDescription: String = "",
     val shortDescription: String = "",
-    val longDescription: List<String> = emptyList(),
+    val longDescription: String = "",
     val images: PlanetImagesModel = PlanetImagesModel()
 )
 

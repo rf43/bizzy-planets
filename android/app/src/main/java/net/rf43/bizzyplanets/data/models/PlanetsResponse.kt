@@ -52,7 +52,7 @@ data class PlanetDTO(
 	val link: String? = null,
 
 	@Json(name="long-description")
-	val longDescription: List<String?>? = null,
+	val longDescription: String? = null,
 
 	@Json(name="short-description")
 	val shortDescription: String? = null
