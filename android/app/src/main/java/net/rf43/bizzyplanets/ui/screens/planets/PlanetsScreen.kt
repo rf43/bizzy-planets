@@ -1,4 +1,4 @@
-package net.rf43.bizzyplanets.ui.screens
+package net.rf43.bizzyplanets.ui.screens.planets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -46,30 +46,7 @@ fun PlanetsScreen(
             horizontalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             items(count = planetList.size) {
-                Box(
-                    modifier = Modifier
-                        .size(164.dp)
-                        .background(Color.Black)
-                        .clickable {
-                            onPlanetSelected(planetList[it].name)
-                        }
-                ) {
-                    AsyncImage(
-                        modifier = Modifier.fillMaxSize(),
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(planetList[it].images.thumbnail)
-                            .crossfade(true)
-                            .build(),
-                        contentDescription = null,
-                        placeholder = painterResource(id = R.drawable.ic_android_black_48dp)
-                    )
-                    Text(
-                        text = planetList[it].name,
-                        color = Color.White,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
+                PlanetItemView(planet = planetList[it], onPlanetSelected)
             }
         }
     }

@@ -1,5 +1,6 @@
 package net.rf43.bizzyplanets.ui.screens
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +23,7 @@ class ScreensViewModel @Inject constructor(
     val planetDetailStateFlow: StateFlow<PlanetModel> = _planetDetailStateFlow
 
     fun initPlanets() {
+        Log.d("RF43", "initPlanets")
         viewModelScope.launch {
             _allPlanetsStateFlow.value = repository.fetchAllPlanets()
         }

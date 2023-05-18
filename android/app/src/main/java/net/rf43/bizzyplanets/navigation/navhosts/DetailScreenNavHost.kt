@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import net.rf43.bizzyplanets.ui.screens.DetailScreen
 import net.rf43.bizzyplanets.ui.screens.ScreensViewModel
+import net.rf43.bizzyplanets.ui.screens.detail.DetailScreen
 
 @Composable
 fun DetailScreenNavHost(
@@ -17,8 +17,8 @@ fun DetailScreenNavHost(
 
     DetailScreen(
         planetDetail = viewModel.planetDetailStateFlow.collectAsState().value,
-        onBackSelected = { route ->
-            navController.navigate(route)
+        onBackSelected = {
+            navController.popBackStack()
         }
     )
 }
