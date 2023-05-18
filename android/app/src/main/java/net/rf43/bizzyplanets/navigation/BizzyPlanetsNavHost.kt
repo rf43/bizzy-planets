@@ -2,7 +2,6 @@ package net.rf43.bizzyplanets.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -10,7 +9,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import net.rf43.bizzyplanets.navigation.navhosts.DetailScreenNavHost
 import net.rf43.bizzyplanets.navigation.navhosts.PlanetsScreenNavHost
-import net.rf43.bizzyplanets.ui.screens.ScreensViewModel
 
 private const val NAV_ARG_PLANET_NAME = "planetName"
 

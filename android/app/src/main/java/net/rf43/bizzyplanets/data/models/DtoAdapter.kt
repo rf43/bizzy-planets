@@ -22,11 +22,11 @@ private fun ImagesDTO?.adaptTo(): PlanetImagesModel {
     var heroUrl = ""
 
     this?.thumbnail?.let {
-        thumbnailUrl = BASE_IMAGE_URL + it
+        thumbnailUrl = "${BASE_IMAGE_URL}/$it"
     }
 
     this?.hero?.let {
-        heroUrl = BASE_IMAGE_URL + it
+        heroUrl = "${BASE_IMAGE_URL}/$it"
     }
 
     return PlanetImagesModel(

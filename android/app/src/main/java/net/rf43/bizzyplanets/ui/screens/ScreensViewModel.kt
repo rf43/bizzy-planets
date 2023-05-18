@@ -18,8 +18,8 @@ class ScreensViewModel @Inject constructor(
     private val _allPlanetsStateFlow: MutableStateFlow<List<PlanetModel>> = MutableStateFlow(emptyList())
     val allPlanetsStateFlow: StateFlow<List<PlanetModel>> = _allPlanetsStateFlow
 
-    private val _planetOLDDetailStateFlow: MutableStateFlow<PlanetModel> = MutableStateFlow(PlanetModel())
-    val planetOLDDetailStateFlow: StateFlow<PlanetModel> = _planetOLDDetailStateFlow
+    private val _planetDetailStateFlow: MutableStateFlow<PlanetModel> = MutableStateFlow(PlanetModel())
+    val planetDetailStateFlow: StateFlow<PlanetModel> = _planetDetailStateFlow
 
     fun initPlanets() {
         viewModelScope.launch {
@@ -29,7 +29,7 @@ class ScreensViewModel @Inject constructor(
 
     fun fetchPlanetDetails(planetName: String) {
         viewModelScope.launch {
-            _planetOLDDetailStateFlow.value = repository.fetchPlanetDetails(planetName)
+            _planetDetailStateFlow.value = repository.fetchPlanetDetails(planetName)
         }
     }
 }
