@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,15 +18,19 @@ import net.rf43.bizzyplanets.ui.theme.BizzyPlanetsTheme
 
 @Composable
 fun PlanetsScreen(
-    planetList: List<PlanetModel> = emptyList(),
+    homeTitle: String,
+    homeSubtitle: String,
+    planetList: List<PlanetModel>,
     onPlanetSelected: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Planets")
-        Text(text = "Four unique, rocky worlds, two complex gas giants and two distant ice giants.")
+        PlanetScreenHeader(
+            title = homeTitle,
+            subtitle = homeSubtitle
+        )
         Spacer(modifier = Modifier.height(24.dp))
         LazyVerticalGrid(
             modifier = Modifier.width(330.dp),
@@ -48,6 +51,8 @@ fun PlanetsScreen(
 fun PlanetsScreenPortraitPreview() {
     BizzyPlanetsTheme {
         PlanetsScreen(
+            homeTitle = "TITLE",
+            homeSubtitle = "Home Subtitle",
             planetList = listOf(
                 PlanetModel(),
                 PlanetModel(),
@@ -65,6 +70,8 @@ fun PlanetsScreenPortraitPreview() {
 fun PlanetsScreenLandscapePreview() {
     BizzyPlanetsTheme {
         PlanetsScreen(
+            homeTitle = "TITLE",
+            homeSubtitle = "Home Subtitle",
             planetList = listOf(
                 PlanetModel(),
                 PlanetModel(),
