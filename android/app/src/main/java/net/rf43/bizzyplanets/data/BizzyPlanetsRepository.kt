@@ -1,17 +1,20 @@
 package net.rf43.bizzyplanets.data
 
-import android.util.Log
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import net.rf43.bizzyplanets.api.BizzyPlanetsApi
+import net.rf43.bizzyplanets.data.models.ContentModel
 import net.rf43.bizzyplanets.data.models.PlanetModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
 interface BizzyPlanetsRepository {
 
+    suspend fun fetchContentData()
+    suspend fun fetchHomeTitle(): String
+    suspend fun fetchHomeSubtitle(): String
     suspend fun fetchAllPlanets(): List<PlanetModel>
     suspend fun fetchPlanetDetails(name: String): PlanetModel
 }
@@ -20,20 +23,26 @@ class BizzyPlanetsRepositoryImpl @Inject constructor(
     private val api: BizzyPlanetsApi
 ) : BizzyPlanetsRepository {
 
-    init {
-        Log.d("RF43", "init")
+    private var contentModel: ContentModel = ContentModel()
+
+    override suspend fun fetchContentData() {
+        contentModel = api.fetchContentData()
     }
 
-    private val planetList: MutableList<PlanetModel> = mutableListOf()
+    override suspend fun fetchHomeTitle(): String {
+        return contentModel.title
+    }
+
+    override suspend fun fetchHomeSubtitle(): String {
+        return contentModel.subtitle
+    }
 
     override suspend fun fetchAllPlanets(): List<PlanetModel> {
-        planetList.addAll(api.fetchAllPlanetData())
-        return planetList
+        return contentModel.planets
     }
 
     override suspend fun fetchPlanetDetails(name: String): PlanetModel {
-        // just fetchAllPlanets for now
-        return planetList.firstOrNull {
+        return contentModel.planets.firstOrNull {
             it.name == name
         } ?: PlanetModel()
     }

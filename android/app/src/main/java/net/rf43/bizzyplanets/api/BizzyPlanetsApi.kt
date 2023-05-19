@@ -4,7 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import net.rf43.bizzyplanets.data.models.PlanetModel
+import net.rf43.bizzyplanets.data.models.ContentModel
 import net.rf43.bizzyplanets.data.models.adaptTo
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -19,7 +19,7 @@ internal const val BASE_IMAGE_URL = BASE_URL + IMAGE_URL_PATH
 
 interface BizzyPlanetsApi {
 
-    suspend fun fetchAllPlanetData(): List<PlanetModel>
+    suspend fun fetchContentData(): ContentModel
 }
 
 class BizzyPlanetsApiImpl @Inject constructor() : BizzyPlanetsApi {
@@ -29,20 +29,18 @@ class BizzyPlanetsApiImpl @Inject constructor() : BizzyPlanetsApi {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    override suspend fun fetchAllPlanetData(): List<PlanetModel> {
+    override suspend fun fetchContentData(): ContentModel {
         val result = retrofit.create(BizzyPlanetsService::class.java)
         val response = result.planetsResponse()
-        val outList: MutableList<PlanetModel> = mutableListOf()
+        var contentModel: ContentModel = ContentModel()
 
         if (response.isSuccessful) {
             response.body()?.let {
-                it.planets?.filterNotNull()?.map { dto ->
-                    outList.add(dto.adaptTo())
-                }
+                contentModel = it.adaptTo()
             }
         }
 
-        return outList
+        return contentModel
     }
 }
 

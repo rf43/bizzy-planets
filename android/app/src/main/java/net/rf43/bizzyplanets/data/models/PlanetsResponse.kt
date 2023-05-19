@@ -6,6 +6,12 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PlanetsResponse(
 
+	@Json(name = "title")
+	val title: String? = null,
+
+	@Json(name = "subtitle")
+	val subtitle: String? = null,
+
 	@Json(name="planets")
 	val planets: List<PlanetDTO?>? = null,
 

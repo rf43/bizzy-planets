@@ -2,7 +2,17 @@ package net.rf43.bizzyplanets.data.models
 
 import net.rf43.bizzyplanets.api.BASE_IMAGE_URL
 
-internal fun PlanetDTO?.adaptTo(): PlanetModel {
+internal fun PlanetsResponse.adaptTo(): ContentModel {
+    return ContentModel(
+        title = this.title ?: "",
+        subtitle = this.subtitle ?: "",
+        planets = this.planets?.map {
+            it.adaptTo()
+        } ?: emptyList()
+    )
+}
+
+private fun PlanetDTO?.adaptTo(): PlanetModel {
     return PlanetModel(
         name = this?.name ?: "",
         link = this?.link ?: "",
