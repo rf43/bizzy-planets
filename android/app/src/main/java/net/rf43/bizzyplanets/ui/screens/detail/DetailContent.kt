@@ -31,7 +31,9 @@ fun DetailContent(
         )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = planetDetail.longDescription.replace("\n", "\n\n")
+            text = planetDetail.longDescription.replace("\n", "\n\n"),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Light
         )
     }
 }
