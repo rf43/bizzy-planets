@@ -6,11 +6,11 @@ struct PlanetItemView: View {
     var width: CGFloat = 0.0
     var height: CGFloat = 0.0
     
-    var onSelected: (PlanetModel) -> Void = { _ in }
+    var onSelected: (PlanetModel) -> Void
     
     var body: some View {
         AsyncImage(
-            url: URL(string: "https://rf43.github.io/bizzy-planets/assets/images/mercury_thumb.jpg"),
+            url: URL(string: planet.images.thumbnailUrl),
             content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fill)
@@ -50,10 +50,10 @@ struct PlanetItemView_Previews: PreviewProvider {
         let itemSize: CGFloat = 164.0
         
         PlanetItemView(
-            planet: PlanetModel(name: "PLANET"),
+            planet: fakePlanetList[0],
             width: itemSize,
             height: itemSize
-        )
+        ) { _ in }
         .frame(width: itemSize, height: itemSize)
         .border(Color.red)
         .background(Color.green)

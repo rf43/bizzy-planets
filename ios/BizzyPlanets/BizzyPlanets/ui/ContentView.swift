@@ -1,8 +1,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = PlanetViewModel()
+    @State private var navPath = NavigationPath()
+    
     var body: some View {
-        PlanetsScreen()
+        NavigationStack(path: $navPath) {
+            PlanetsScreen(
+                headerTitle: viewModel.planetScreenHeaderTitle,
+                headerSubtitle: viewModel.planetScreenHeaderSubtitle
+            ) { planet in
+                navPath.append(planet)
+            }
+            .navigationDestination(for: PlanetModel.self) { planet in
+                PlanetDetailScreen(planet: planet)
+            }
+        }
     }
 }
 

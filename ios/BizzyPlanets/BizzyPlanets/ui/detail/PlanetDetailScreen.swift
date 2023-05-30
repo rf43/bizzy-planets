@@ -1,20 +1,19 @@
-//
-//  PlanetDetailScreen.swift
-//  BizzyPlanets
-//
-//  Created by Rich Friedel on 5/23/23.
-//
-
 import SwiftUI
 
 struct PlanetDetailScreen: View {
+    
+    var planet: PlanetModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            PlanetDetailHero(planetDetail: planet)
+            PlanetDetailContent(planetDetail: planet)
+        }
     }
 }
 
 struct PlanetDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        PlanetDetailScreen()
+        PlanetDetailScreen(planet: fakePlanetList[4])
     }
 }

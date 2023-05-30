@@ -7,23 +7,38 @@ struct PlanetsGridView: View {
     
     var planets: [PlanetModel]
     
+    var onPlanetSelected: (PlanetModel) -> Void
+    
     var body: some View {
         
+        // Externalizing the item size here so that we are able
+        // to control the item size from out here in the event
+        // each item needs to have a different size.
+        //
+        // An example of this might be where the items are in
+        // scrolling list and as the user scrolls, each item
+        // starts small, grows as the list is scrolled and
+        // then shrinks in size as it approaches the top of
+        // the list.
         let itemSize: CGFloat = 164.0
         
         Grid(horizontalSpacing: 1, verticalSpacing: 1) {
-            ForEach(0..<4) { _ in
+            ForEach(0..<4) { i in
+                
+                let first = i * 2
+                let second = i * 2 + 1
+                
                 GridRow {
                     PlanetItemView(
-                        planet: planets[0],
+                        planet: planets[first],
                         width: itemSize,
                         height: itemSize
-                    )
+                    ) { planet in onPlanetSelected(planet)}
                     PlanetItemView(
-                        planet: planets[1],
+                        planet: planets[second],
                         width: itemSize,
                         height: itemSize
-                    )
+                    ) { planet in onPlanetSelected(planet)}
                 }
             }
         }
@@ -32,17 +47,6 @@ struct PlanetsGridView: View {
 
 struct PlanetsGridView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanetsGridView(
-            planets: [
-                PlanetModel(name: "Mercury"),
-                PlanetModel(name: "Venus"),
-                PlanetModel(name: "Earth"),
-                PlanetModel(name: "Mars"),
-                PlanetModel(name: "Jupiter"),
-                PlanetModel(name: "Saturn"),
-                PlanetModel(name: "Uranus"),
-                PlanetModel(name: "Neptune")
-            ]
-        )
+        PlanetsGridView(planets: fakePlanetList) { _ in }
     }
 }

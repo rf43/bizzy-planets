@@ -5,26 +5,27 @@ struct PlanetsScreen: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.dynamicTypeSize) private var typeSize
     
-    var planets: [PlanetModel] = [
-        PlanetModel(name: "Mercury"),
-        PlanetModel(name: "Venus"),
-        PlanetModel(name: "Earth"),
-        PlanetModel(name: "Mars"),
-        PlanetModel(name: "Jupiter"),
-        PlanetModel(name: "Saturn"),
-        PlanetModel(name: "Uranus"),
-        PlanetModel(name: "Neptune")
-    ]
+    var headerTitle: String
+    var headerSubtitle: String
+    var onPlanetSelected: (PlanetModel) -> Void
     
     var body: some View {
-        PlanetsGridView(
-            planets: planets
-        )
+        VStack {
+            PlanetScreenHeader(
+                headerTitle: self.headerTitle,
+                headerSubtitle: self.headerSubtitle
+            )
+            PlanetsGridView(
+                planets: fakePlanetList
+            ) { planet in onPlanetSelected(planet)}
+        }
     }
 }
 
 struct PlanetsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        PlanetsScreen()
+        PlanetsScreen(
+            headerTitle: "HeaderTitle", headerSubtitle: "HeaderSubtitle"
+        ) { _ in }
     }
 }
