@@ -37,7 +37,7 @@ struct PlanetNameOverlay: View {
                 .font(.headline)
                 .padding(6)
                 .foregroundColor(.white)
-                
+            
         }
         .background(Color.black.opacity(0.5))
         .cornerRadius(8.0)
@@ -47,15 +47,15 @@ struct PlanetNameOverlay: View {
 
 struct PlanetItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let itemSize: CGFloat = 164.0
+        let itemSize: CGFloat = 243.0
         
         PlanetItemView(
             planet: fakePlanetList[0],
             width: itemSize,
             height: itemSize
         ) { _ in }
-        .frame(width: itemSize, height: itemSize)
-        .border(Color.red)
-        .background(Color.green)
+            .frame(width: itemSize, height: itemSize)
+            .border(Color.red)
+            .background(Color.green)
     }
 }

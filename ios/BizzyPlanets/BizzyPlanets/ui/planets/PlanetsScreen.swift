@@ -7,6 +7,7 @@ struct PlanetsScreen: View {
     
     var headerTitle: String
     var headerSubtitle: String
+    var planets: [PlanetModel]
     var onPlanetSelected: (PlanetModel) -> Void
     
     var body: some View {
@@ -16,7 +17,7 @@ struct PlanetsScreen: View {
                 headerSubtitle: self.headerSubtitle
             )
             PlanetsGridView(
-                planets: fakePlanetList
+                planets: planets
             ) { planet in onPlanetSelected(planet)}
         }
     }
@@ -25,7 +26,9 @@ struct PlanetsScreen: View {
 struct PlanetsScreen_Previews: PreviewProvider {
     static var previews: some View {
         PlanetsScreen(
-            headerTitle: "HeaderTitle", headerSubtitle: "HeaderSubtitle"
+            headerTitle: "HeaderTitle",
+            headerSubtitle: "HeaderSubtitle",
+            planets: fakePlanetList
         ) { _ in }
     }
 }
