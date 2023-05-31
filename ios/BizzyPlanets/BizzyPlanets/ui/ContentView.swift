@@ -9,7 +9,8 @@ struct ContentView: View {
         NavigationStack(path: $navPath) {
             PlanetsScreen(
                 headerTitle: viewModel.planetScreenHeaderTitle,
-                headerSubtitle: viewModel.planetScreenHeaderSubtitle
+                headerSubtitle: viewModel.planetScreenHeaderSubtitle,
+                planets: viewModel.planets
             ) { planet in
                 navPath.append(planet)
             }

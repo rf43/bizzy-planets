@@ -20,7 +20,6 @@ struct PlanetDetailHero: View {
                     }
                 )
             }
-            .clipped()
             .overlay(HeroEyebrowOverlay(planetDetail: self.planetDetail), alignment: .bottomLeading)
         }
         .frame(height: heroHeight)
@@ -32,21 +31,32 @@ private struct HeroEyebrowOverlay: View {
     var planetDetail: PlanetModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            // Text -> Planet name
-            Text(planetDetail.name).foregroundColor(Color.white)
-            // Text -> Short description
-            Text(planetDetail.shortDescription).foregroundColor(Color.white)
+        VStack {
+            Text(planetDetail.name)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(Color.white)
+                .font(.system(size: 18.0))
+            Text(planetDetail.shortDescription)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(Color.white)
+                .font(.system(size: 10.0))
         }
-        .border(Color.red)
-        .background(Color.green)
+        .frame(width: 200.0)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color.eyebrowLeadingColor, Color.eyebrowTrailingColor]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
+        .padding(8.0)
     }
 }
 
 struct PlanetDetailHero_Previews: PreviewProvider {
     static var previews: some View {
         PlanetDetailHero(
-            planetDetail: fakePlanetList[1]
+            planetDetail: fakePlanetList[3]
         )
         .border(Color.red)
         .background(Color.green)

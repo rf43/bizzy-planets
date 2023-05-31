@@ -7,5 +7,6 @@ extension ContentView {
         @Published private(set) var planetScreenHeaderTitle: String = "Planets"
         @Published private(set) var planetScreenHeaderSubtitle: String = "Loading..."
         @Published private(set) var planetModel: PlanetModel = fakePlanetList[0]
+        @Published private(set) var planets: [PlanetModel] = fakePlanetList
     }
 }
