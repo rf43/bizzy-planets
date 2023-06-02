@@ -8,6 +8,8 @@ struct PlanetScreenHeader: View {
     var body: some View {
         VStack {
             Text(headerTitle)
+                .font(.system(size: 16.0))
+                .fontWeight(.light)
             Text(headerSubtitle)
         }
     }
@@ -16,7 +18,8 @@ struct PlanetScreenHeader: View {
 struct PlanetScreenHeader_Previews: PreviewProvider {
     static var previews: some View {
         PlanetScreenHeader(
-            headerTitle: "Header Title", headerSubtitle: "header subtitle"
+            headerTitle: "Header Title",
+            headerSubtitle: "header subtitle"
         )
     }
 }

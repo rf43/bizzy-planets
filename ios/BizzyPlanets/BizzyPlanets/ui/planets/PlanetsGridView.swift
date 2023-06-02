@@ -23,22 +23,28 @@ struct PlanetsGridView: View {
         let itemSize: CGFloat = 164.0
         
         Grid(horizontalSpacing: 1, verticalSpacing: 1) {
-            ForEach(0..<4) { i in
+            
+            if planets.count == 0 {
+                Text("nope...")
+            } else {
                 
-                let first = i * 2
-                let second = i * 2 + 1
-                
-                GridRow {
-                    PlanetItemView(
-                        planet: planets[first],
-                        width: itemSize,
-                        height: itemSize
-                    ) { planet in onPlanetSelected(planet)}
-                    PlanetItemView(
-                        planet: planets[second],
-                        width: itemSize,
-                        height: itemSize
-                    ) { planet in onPlanetSelected(planet)}
+                ForEach(0..<4) { i in
+                    
+                    let first = i * 2
+                    let second = i * 2 + 1
+                    
+                    GridRow {
+                        PlanetItemView(
+                            planet: planets[first],
+                            width: itemSize,
+                            height: itemSize
+                        ) { planet in onPlanetSelected(planet)}
+                        PlanetItemView(
+                            planet: planets[second],
+                            width: itemSize,
+                            height: itemSize
+                        ) { planet in onPlanetSelected(planet)}
+                    }
                 }
             }
         }
