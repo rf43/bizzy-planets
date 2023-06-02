@@ -17,6 +17,9 @@ struct ContentView: View {
             .navigationDestination(for: PlanetModel.self) { planet in
                 PlanetDetailScreen(planet: planet)
             }
+            .task {
+                await viewModel.initPlanets()
+            }
         }
     }
 }

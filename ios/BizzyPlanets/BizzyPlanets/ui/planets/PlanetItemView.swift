@@ -47,7 +47,7 @@ struct PlanetNameOverlay: View {
 
 struct PlanetItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let itemSize: CGFloat = 243.0
+        let itemSize: CGFloat = 165
         
         PlanetItemView(
             planet: fakePlanetList[0],

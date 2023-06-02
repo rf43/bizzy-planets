@@ -11,6 +11,17 @@ class PlanetModel: ObservableObject, Identifiable, Hashable {
     var longDescription: String
     var images: PlanetImageModel
     
+    convenience init() {
+        self.init(
+            name: "",
+            link: "",
+            quickDescription: "",
+            shortDescription: "",
+            longDescription: "",
+            images: PlanetImageModel(thumbnailUrl: "", heroUrl: "")
+        )
+    }
+    
     init(name: String, link: String, quickDescription: String, shortDescription: String, longDescription: String, images: PlanetImageModel) {
         self.name = name
         self.link = link
