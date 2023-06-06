@@ -22,6 +22,8 @@ struct PlanetsGridView: View {
         // the list.
         let itemSize: CGFloat = 164.0
         
+        
+        // TODO: Refactor this to use LazyVGrid
         Grid(horizontalSpacing: 1, verticalSpacing: 1) {
             
             if planets.count == 0 {
